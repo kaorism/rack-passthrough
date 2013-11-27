@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rack::Passthrough::VERSION
   spec.authors       = ["Jo"]
   spec.email         = ["jo@smartsoftasia.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = ""
+  spec.summary       = ""
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 
-  spec.add_dependency "httparty"
+  # spec.add_dependency "httparty"
 end

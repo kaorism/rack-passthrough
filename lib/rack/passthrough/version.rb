@@ -1,5 +1,5 @@
 module Rack
   module Passthrough
-    VERSION = "0.0.1"
+    VERSION = "0.0.4"
   end
 end

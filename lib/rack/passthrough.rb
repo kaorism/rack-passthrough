@@ -30,14 +30,24 @@ module Rack
         # body_data = Rack::Utils.parse_query( data ) unless data.blank?
         conn = HTTParty.method( request.request_method.downcase.to_sym )
 
-        # Request to endpoint
-        response = conn.call( full_path.to_s, { body: env["action_dispatch.request.request_parameters"] } )
-        headers = {}
+        # Handle form-encoded or application/json
+        if env["action_dispatch.request.request_parameters"].blank?
+          body  = Rack::Utils.parse_query( data ) unless data.blank?
+        else
+          body = env["action_dispatch.request.request_parameters"] unless data.blank?
+        end
 
+        response = conn.call( full_path.to_s, { body: body } )
+
+        # Headers
+        headers = {}
         response.headers.each do |key,value|
           headers.merge!({ key => to_normal_string(value) })
-
         end
+
+        # Fix no response
+        headers.except!('transfer-encoding')
+
 
         [ response.code , headers , [response.body] ]
       end

@@ -26,8 +26,7 @@ module Rack
         # Set Query String
         full_path.query = request.query_string
         data = request.body.read
-        # body_data = JSON.parse( data ) unless data.blank?
-        # body_data = Rack::Utils.parse_query( data ) unless data.blank?
+
         conn = HTTParty.method( request.request_method.downcase.to_sym )
 
         # Handle form-encoded or application/json

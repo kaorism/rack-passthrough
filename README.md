@@ -18,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In routes.rb
+
+  # resources :users will be forwarded to 'http://target-path.com' :
+
+  resources :users, to: Rack::Passthrough::Endpoint.new( 'http://target-path.com' )
+
+  # resources :products will be internal processed :
+
+  resources :products
+
 
 ## Contributing
 
